@@ -1,0 +1,13 @@
+aside {
+    background-color: blue;
+    border-radius: .3rem;
+    bottom: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 33%;
+    img {
+        filter: invert(1);
+    }
+}

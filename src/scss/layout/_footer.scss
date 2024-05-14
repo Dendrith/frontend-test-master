@@ -1,0 +1,41 @@
+footer {
+    background-color: black;
+    padding: .5rem 0 1rem 0;
+    text-transform: uppercase;
+    .help {
+        color: white;
+        text-align: center;
+        
+        h5 {
+            text-transform: none;
+        }
+        .footer-figure {
+            display: flex;
+            justify-content: center;
+            img {
+                background-color: white;
+                border-radius: 50%;
+                margin-bottom: 0.5rem;
+                padding: 1rem;
+            }
+        }
+    }
+    .footer-other {
+        background-color: white;
+        text-align: center;
+        nav {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0 1rem 0;
+            a {
+                font-weight: bold;
+                padding: .5rem 0 .5rem 0;
+            }
+        }
+        img {
+            background-color: blue;
+            border-radius: 50%;
+            padding: .5rem;
+        }
+    }
+}

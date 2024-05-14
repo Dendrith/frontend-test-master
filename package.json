@@ -1,0 +1,21 @@
+{
+  "name": "frontend-test-master",
+  "version": "1.0.0",
+  "description": "Test frontend Ilerna",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch src/scss:build/css"
+  },
+  "keywords": [
+    "frontend",
+    "html",
+    "css",
+    "javascript",
+    "sass"
+  ],
+  "author": "rmaillo",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.77.1"
+  }
+}
