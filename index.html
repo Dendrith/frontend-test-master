@@ -23,11 +23,56 @@
         <h4>Filtrar</h4>
         <img src="src/svg/filters.svg" alt="filters">
     </button>
-    <section>
+    <main>
         <h1>Cervezas</h1>
-    </section>
-    <section>
+        
+        <div id="productos-container"></div>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+
+    <script id="products-template" type="text/x-handlebars-template">
+
+    {{#each products}}
+    <div class="product">
+        <img src="src/img/{{img}}" alt="{{img}}">
+        <h2>{{name}}</h2>
+        <p>{{description}}</p>
+        <p>{{price}}</p>    
+    </div>
+    {{/each}}
+
+    </script>
+  
+  <script>
+    // Obtener la plantilla
+    var source = document.getElementById("products-template").innerHTML;
+  
+    // Compilar la plantilla
+    var template = Handlebars.compile(source);
+  
+    // Obtener los datos del archivo JSON
+    fetch('products.json')
+      .then(response => response.json())
+      .then(data => {
+        // Renderizar la plantilla con los datos JSON
+        var html = template(data);
+        
+        // Insertar el HTML generado en el documento
+        document.getElementById("resultado").innerHTML = html;
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+  
+
+  <div id="resultado"></div>
+
+    </main>
+    <section>
+        <div>
+            <h4>Sigue mercando</h4>
+            <h2>Vinos</h2>
+        </div>
+        <img src="src/svg/arrow-right.svg" alt="">
     </section>
     <footer>
         <div>
