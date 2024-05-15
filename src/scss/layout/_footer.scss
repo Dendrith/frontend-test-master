@@ -37,8 +37,9 @@ footer {
             margin: 0 auto;
             width: 5rem;
             img {
-                background-color: blue;
+                background-color: yellow;
                 border-radius: 50%;
+                filter: invert(1);
                 margin-top: 1rem;
                 padding: .5rem;
             }

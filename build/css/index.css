@@ -328,6 +328,7 @@ header img {
 button {
   align-items: center;
   background-color: blue;
+  border: none;
   border-radius: 0.3rem;
   bottom: 0;
   color: white;
@@ -335,7 +336,7 @@ button {
   height: 2rem;
   justify-content: space-around;
   position: fixed;
-  bottom: 0;
+  bottom: 0.3rem;
   left: 35%;
   width: 30%;
 }
@@ -387,10 +388,38 @@ footer .footer-other .insta-icon {
   width: 5rem;
 }
 footer .footer-other .insta-icon img {
-  background-color: blue;
+  background-color: yellow;
   border-radius: 50%;
+  filter: invert(1);
   margin-top: 1rem;
   padding: 0.5rem;
+}
+
+main {
+  margin-top: 7rem;
+  text-align: center;
+}
+
+section {
+  border: 1px solid lightgrey;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem 3rem 1rem;
+}
+section div {
+  margin-left: 1rem;
+}
+section div h2 {
+  margin-top: 0;
+}
+section div h4 {
+  margin-bottom: 0.5rem;
+  font-weight: normal;
+}
+section img {
+  color: blue;
+  margin-right: 2rem;
 }
 
 /*# sourceMappingURL=index.css.map */
