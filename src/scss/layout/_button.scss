@@ -1,0 +1,20 @@
+button {
+    align-items: center;
+    background-color: blue;
+    border-radius: .3rem;
+    bottom: 0;
+    color: white;
+    display: flex;
+    height: 2rem;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 35%;
+    width: 30%;
+    h4 {
+        text-transform: uppercase;
+    }
+    img {
+        filter: invert(1);
+    }
+}
