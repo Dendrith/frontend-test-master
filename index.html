@@ -32,39 +32,19 @@
 
     <script id="products-template" type="text/x-handlebars-template">
 
-    {{#each products}}
-    <div class="product">
-        <img src="src/img/{{img}}" alt="{{img}}">
-        <h2>{{name}}</h2>
-        <p>{{description}}</p>
-        <p>{{price}}</p>    
-    </div>
-    {{/each}}
+        {{#each products}}
+        <div class="product">
+            <img src="src/img/{{img}}" alt="{{img}}">
+            <h2>{{name}}</h2>
+            <p>{{description}}</p>
+            <h4>${{price}}</h4>    
+            <h4 class="btn-add">Agregar</h4>
+        </div>
+        {{/each}}
 
-    </script>
-  
-  <script>
-    // Obtener la plantilla
-    var source = document.getElementById("products-template").innerHTML;
-  
-    // Compilar la plantilla
-    var template = Handlebars.compile(source);
-  
-    // Obtener los datos del archivo JSON
-    fetch('products.json')
-      .then(response => response.json())
-      .then(data => {
-        // Renderizar la plantilla con los datos JSON
-        var html = template(data);
-        
-        // Insertar el HTML generado en el documento
-        document.getElementById("resultado").innerHTML = html;
-      })
-      .catch(error => console.error('Error:', error));
-  </script>
-  
+    </script> 
 
-  <div id="resultado"></div>
+    <div id="result"></div>
 
     </main>
     <section>
@@ -105,5 +85,6 @@
             </div>           
         </div>
     </footer>
+    <script src="src/js/script.js"></script>
 </body>
 </html>
