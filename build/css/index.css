@@ -400,6 +400,29 @@ main {
   text-align: center;
 }
 
+#result {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  gap: 1rem;
+  margin: 1rem 2rem 2rem 1rem;
+}
+
+.product {
+  border: 1px solid lightgrey;
+  border-radius: 0.3rem;
+  display: grid;
+  grid-template-rows: 100px 50px 50px 50px 50px;
+}
+.product img {
+  justify-self: center;
+  max-width: 120px;
+}
+.product .btn-add {
+  background-color: lightgrey;
+  border-top: 1px solid lightgrey;
+  text-transform: uppercase;
+}
+
 section {
   border: 1px solid lightgrey;
   border-radius: 0.3rem;
