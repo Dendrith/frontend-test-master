@@ -325,12 +325,11 @@ header img {
   padding: 0.5rem;
 }
 
-button {
+.btn-filter {
   align-items: center;
   background-color: blue;
   border: none;
   border-radius: 0.3rem;
-  bottom: 0;
   color: white;
   display: flex;
   height: 2rem;
@@ -340,10 +339,10 @@ button {
   left: 35%;
   width: 30%;
 }
-button h4 {
+.btn-filter h4 {
   text-transform: uppercase;
 }
-button img {
+.btn-filter img {
   filter: invert(1);
 }
 
@@ -443,6 +442,88 @@ section div h4 {
 section img {
   color: blue;
   margin-right: 2rem;
+}
+
+.filter {
+  bottom: 0;
+  position: fixed;
+  visibility: hidden;
+  width: 100%;
+}
+.filter fieldset {
+  background-color: white;
+  border: none;
+  justify-content: space-between;
+  padding: 0;
+}
+.filter fieldset legend {
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  margin-left: 90%;
+  height: 2rem;
+  width: 2rem;
+}
+.filter fieldset legend img {
+  width: 70%;
+}
+.filter fieldset h3 {
+  font-weight: bold;
+  margin: 0 1rem 1rem 1rem;
+}
+.filter fieldset .filter-options {
+  border-top: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem 1rem 1rem;
+  padding-top: 1rem;
+}
+.filter fieldset .filter-options-last {
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 1rem;
+}
+
+.filter-btns {
+  align-items: center;
+  background-color: lightgrey;
+  display: flex;
+  height: 3rem;
+  justify-content: space-around;
+}
+.filter-btns .filter-btn1 {
+  align-items: center;
+  border: 1px solid lightgrey;
+  border-radius: 0.3rem;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  width: 25%;
+}
+.filter-btns .filter-btn1 h4 {
+  text-transform: uppercase;
+}
+.filter-btns .filter-btn2 {
+  align-items: center;
+  background-color: blue;
+  border: none;
+  border-radius: 0.3rem;
+  color: white;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  width: 25%;
+}
+.filter-btns .filter-btn2 h4 {
+  text-transform: uppercase;
+}
+.filter-btns .filter-btn2 img {
+  filter: invert(1);
+}
+
+.mostrar {
+  visibility: visible;
 }
 
 /*# sourceMappingURL=index.css.map */

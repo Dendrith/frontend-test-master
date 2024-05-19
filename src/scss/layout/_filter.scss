@@ -1,0 +1,87 @@
+//Estilos Menú Filtros
+
+.filter {
+    
+    bottom: 0;
+    position: fixed;
+    visibility: hidden;
+    width: 100%;
+    fieldset {
+        background-color: white;
+        border: none;
+        legend {background-color: white;
+            border: 1px solid lightgrey;
+            border-radius: .3rem;
+            display: flex;
+            justify-content: center;
+            margin-left: 90%;
+            height: 2rem;
+            width: 2rem;
+            img {
+                width: 70%;
+            }
+        }
+        h3 {
+            font-weight: bold;
+            margin: 0 1rem 1rem 1rem;
+        }
+        justify-content: space-between;
+        padding: 0;
+        .filter-options {
+            border-top: 1px solid lightgrey;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 1rem 1rem 1rem;
+            padding-top: 1rem;
+        }
+        .filter-options-last {
+            border-bottom: 1px solid lightgrey;
+            padding-bottom: 1rem;
+        }
+    }
+
+    
+}
+.filter-btns {
+    align-items: center;
+    background-color: lightgrey;
+    display: flex;
+    height: 3rem;
+    justify-content: space-around;   
+    .filter-btn1 {
+        align-items: center;
+        border: 1px solid lightgrey;
+        border-radius: .3rem;
+        display: flex;
+        height: 2rem;
+        justify-content: center;
+        width: 25%;
+        h4 {            
+            text-transform: uppercase;
+        }
+    }
+    .filter-btn2 {
+        align-items: center;
+        background-color: blue;
+        border: none;
+        border-radius: .3rem;
+        color: white;
+        display: flex;
+        height: 2rem;
+        justify-content: center;
+        width: 25%;
+        
+        h4 {            
+            text-transform: uppercase;
+        }
+        img {
+            filter: invert(1);
+        }
+    }
+}
+
+.mostrar {
+    visibility: visible;
+}
+
+
