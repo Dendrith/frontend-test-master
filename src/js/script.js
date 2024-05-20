@@ -22,14 +22,14 @@ fetch('products.json')
 document.addEventListener('DOMContentLoaded', function() {
 
     eventListeners();
-    //eventListeners2();
+    
 
 });
 
 // Función evento boton filtro
 function eventListeners() {
     
-    const btnFilter = document.querySelector('.btn-filter');
+    const btnFilter = document.querySelector('#btn-filter');
 
     btnFilter.addEventListener('click', openFilter);
 }
@@ -44,28 +44,6 @@ function openFilter() {
     } else {
         filter.classList.add('mostrar');
     }
+    
 
 }
-
-/*
-// Función para evento botón cerrar
-function eventListeners2() {
-
-    const btnClose = document.querySelector('.btn-close');
-
-    btnClose.addEventListener2('click', closeFilter);
-
-}
-
-
-// Función para agregar o eliminar clase mostrar
-function closeFilter() {
-    const filter2 = document.querySelector('.filter');
-
-    if (filter2.classList.contains('mostrar')) {
-        filter2.classList.remove('mostrar');
-    }else {
-        filter2.classList.add('mostrar');
-    }
-}
-*/

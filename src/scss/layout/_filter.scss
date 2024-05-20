@@ -2,13 +2,21 @@
 
 .filter {
     
-    bottom: 0;
+    bottom: 0; 
+    opacity: 0;
     position: fixed;
+    transition: visibility .5s ease-in-out, opacity .5s linear;
     visibility: hidden;
     width: 100%;
+    z-index: 3;
     fieldset {
         background-color: white;
         border: none;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        
         legend {background-color: white;
             border: 1px solid lightgrey;
             border-radius: .3rem;
@@ -25,8 +33,7 @@
             font-weight: bold;
             margin: 0 1rem 1rem 1rem;
         }
-        justify-content: space-between;
-        padding: 0;
+        
         .filter-options {
             border-top: 1px solid lightgrey;
             display: flex;
@@ -81,6 +88,8 @@
 }
 
 .mostrar {
+    opacity: 1;
+    transition: visibility .5s ease-in-out, opacity .5s linear;
     visibility: visible;
 }
 

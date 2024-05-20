@@ -14,7 +14,7 @@ main {
     border: 1px solid lightgrey;
     border-radius: .3rem;
     display: grid;
-    grid-template-rows: 100px 50px 50px 50px 50px;
+    
     
     img {
         justify-self: center;
@@ -22,7 +22,10 @@ main {
     }
     .btn-add {
         background-color: lightgrey;
+        border: none;
         border-top: 1px solid lightgrey;
+        color: blue;
         text-transform: uppercase;
+        height: 2rem;
     }
 }

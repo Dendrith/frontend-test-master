@@ -325,7 +325,7 @@ header img {
   padding: 0.5rem;
 }
 
-.btn-filter {
+#btn-filter {
   align-items: center;
   background-color: blue;
   border: none;
@@ -338,11 +338,12 @@ header img {
   bottom: 0.3rem;
   left: 35%;
   width: 30%;
+  z-index: 2;
 }
-.btn-filter h4 {
+#btn-filter h4 {
   text-transform: uppercase;
 }
-.btn-filter img {
+#btn-filter img {
   filter: invert(1);
 }
 
@@ -410,7 +411,6 @@ main {
   border: 1px solid lightgrey;
   border-radius: 0.3rem;
   display: grid;
-  grid-template-rows: 100px 50px 50px 50px 50px;
 }
 .product img {
   justify-self: center;
@@ -418,8 +418,11 @@ main {
 }
 .product .btn-add {
   background-color: lightgrey;
+  border: none;
   border-top: 1px solid lightgrey;
+  color: blue;
   text-transform: uppercase;
+  height: 2rem;
 }
 
 section {
@@ -446,15 +449,20 @@ section img {
 
 .filter {
   bottom: 0;
+  opacity: 0;
   position: fixed;
+  transition: visibility 0.5s ease-in-out, opacity 0.5s linear;
   visibility: hidden;
   width: 100%;
+  z-index: 3;
 }
 .filter fieldset {
   background-color: white;
   border: none;
   justify-content: space-between;
+  margin: 0;
   padding: 0;
+  width: 100%;
 }
 .filter fieldset legend {
   background-color: white;
@@ -523,6 +531,8 @@ section img {
 }
 
 .mostrar {
+  opacity: 1;
+  transition: visibility 0.5s ease-in-out, opacity 0.5s linear;
   visibility: visible;
 }
 

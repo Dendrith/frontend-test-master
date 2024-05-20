@@ -1,4 +1,4 @@
-.btn-filter {
+#btn-filter {
     align-items: center;
     background-color: blue;
     border: none;
@@ -11,6 +11,7 @@
     bottom: 0.3rem;
     left: 35%;
     width: 30%;
+    z-index: 2;
     h4 {
         text-transform: uppercase;
     }

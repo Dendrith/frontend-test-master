@@ -19,7 +19,7 @@
             </div>        
         </nav>
     </header>
-    <button class="btn-filter">
+    <button id="btn-filter">
         <h4>Filtrar</h4>
         <img src="src/svg/filters.svg" alt="filters">
     </button>
@@ -68,10 +68,10 @@
         {{#each products}}
         <div class="product">
             <img src="src/img/{{img}}" alt="{{img}}">
-            <h2>{{name}}</h2>
+            <h3>{{name}}</h3>
             <p>{{description}}</p>
             <h4>${{price}}</h4>    
-            <h4 class="btn-add">Agregar</h4>
+            <button class="btn-add">Agregar</button>
         </div>
         {{/each}}
 
