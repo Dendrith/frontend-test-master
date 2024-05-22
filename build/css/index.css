@@ -325,7 +325,7 @@ header img {
   padding: 0.5rem;
 }
 
-#btn-filter {
+#btnOpenFilter {
   align-items: center;
   background-color: blue;
   border: none;
@@ -340,10 +340,10 @@ header img {
   width: 30%;
   z-index: 2;
 }
-#btn-filter h4 {
+#btnOpenFilter h4 {
   text-transform: uppercase;
 }
-#btn-filter img {
+#btnOpenFilter img {
   filter: invert(1);
 }
 
