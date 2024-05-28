@@ -1,27 +1,33 @@
+@use '../base/variables' as v;
+
+//Footer
 footer {
-    background-color: black;
+    background-color: v.$secondary;
     padding: .5rem 0 1rem 0;
     text-transform: uppercase;
+    
     .help {
-        color: white;
+        color: v.$primary;
         text-align: center;
         
-        h5 {
+        h4 {
+            margin-bottom: .5rem;
             text-transform: none;
         }
         .footer-figure {
             display: flex;
             justify-content: center;
+            margin-bottom: 1rem;
             img {
-                background-color: white;
+                background-color: v.$primary;
                 border-radius: 50%;
-                margin-bottom: 0.5rem;
+                margin-bottom: .5rem;
                 padding: 1rem;
             }
         }
     }
-    .footer-other {
-        background-color: white;
+    .footer-about {
+        background-color: v.$primary;
         text-align: center;
         nav {
             display: flex;
@@ -32,18 +38,20 @@ footer {
                 padding: .5rem 0 .5rem 0;
             }
         }
-        .insta-icon {
-            border-top: 1px solid lightgrey;
-            margin: 0 auto;
-            width: 5rem;
-            img {
-                background-color: yellow;
-                border-radius: 50%;
-                filter: invert(1);
-                margin-top: 1rem;
-                padding: .5rem;
-            }
+        .footer-insta {
+            border-top: 1px solid v.$terciary;
+            margin-left: 33%;
+            width: 33%;
         }
-        
+        img {
+            background-color: yellow;
+            border-radius: 50%;
+            filter: invert(1);
+            margin-top: 1rem;
+            padding: .5rem;
+        }
+    }
+    h6 {
+        padding-bottom: .5rem;
     }
 }

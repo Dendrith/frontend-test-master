@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="build/css/index.css">
 </head>
 <body>
@@ -19,73 +22,66 @@
             </div>        
         </nav>
     </header>
-    <button id="btnOpenFilter">
-        <h4>Filtrar</h4>
-        <img src="src/svg/filters.svg" alt="filters">
-    </button>
+    <button type="button" id="btnOpenFilter" class="btn-filter">Filtrar <img src="src/svg/filters.svg" alt="filters"></button>
 
-    <div class="filter">
-        <form>
-            <fieldset>
-                <legend ><button class="btn-close" ><img src="src/svg/close.svg" alt="close"></button></legend>
-                <h3>Filtros</h3>
-                <div class="filter-options">
-                    <label for="">Rubia</label>
-                    <input class="checkboxes" id="checkbox1" type="checkbox" value="1">
-                </div>
-                <div class="filter-options">
-                    <label for="">Morena</label>
-                    <input class="checkboxes" id="checkbox2" type="checkbox" value="2">
-                </div>
-                <div  class="filter-options filter-options-last">
-                    <label for="">Roja</label>
-                    <input class="checkboxes" id="checkbox3" type="checkbox" value="3">
-                </div>
-                <div class="filter-btns">
-                    <button type="button" id="clear" class="filter-btn1">
-                        <h4>Limpiar</h4>
-                    </button>
-                    <button type="button" id="botonFiltrado" class="filter-btn2">
-                        <h4>Filtrar</h4>
-                        <img src="src/svg/filters.svg" alt="filters">
-                    </button>
-                </div>
-                
-            </fieldset>
-            
-        </form>
-    </div>
-
-    <main>
+    <section class="section-prim">
         <h1>Cervezas</h1>
-        
-        <div id="productos-container"></div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
 
-    <script id="products-template" type="text/x-handlebars-template">
+        <script id="products-template" type="text/x-handlebars-template">
 
-        {{#each products}}
-        <div class="product">
-            <img src="src/img/{{img}}" alt="{{img}}">
-            <h3>{{name}}</h3>
-            <p>{{description}}</p>
-            <h4>${{price}}</h4>    
-            <button class="btn-add">Agregar</button>
-        </div>
-        {{/each}}
+            {{#each products}}
+            <div class="product">
+                    <img src="src/img/{{img}}" alt="{{img}}">
+                    <h4>{{name}}</h4>
+                    <p>{{description}}</p>
+                    <h4>${{price}}</h4>  
+                    <button type="button" class="btn-agregar">Agregar</button>
+            </div>
+            {{/each}}
 
-    </script> 
+        </script>
 
-    <div id="result"></div>
+        <div id="result"></div>
 
-    </main>
-    <section>
+    </section>
+    <section class="section-sec">
         <div>
-            <h4>Sigue mercando</h4>
+            <h5>Sigue mercando</h5>
             <h2>Vinos</h2>
         </div>
-        <img src="src/svg/arrow-right.svg" alt="">
+        <div>
+            <img src="src/svg/arrow-right.svg" alt="arrow-right">
+        </div>
+    </section>
+    <section>
+        <div class="filter">
+            <form  action="">
+                <fieldset>
+                    <legend  class="btn-close-form"><button type="button" id="btnCloseFilter"><img src="src/svg/close.svg" alt="close"></button></legend>
+                    <h3>Filtros</h3>
+                    <div class="filterOptions">
+                        <label for="text">Rubia</label>
+                        <input type="checkbox" id="checkbox1" class="checkboxes" value="1">
+                    </div>
+                    <div class="filterOptions">
+                        <label for="text">Morena</label>
+                        <input type="checkbox" id="checkbox2" class="checkboxes" value="2">
+                    </div>
+                    <div class="filterOptions">
+                        <label for="text">Roja</label>
+                        <input type="checkbox" id="checkbox3" class="checkboxes" value="3">
+                    </div>
+                    <div class="filter-options-last"><span></span></div>
+
+                    <div class="filter-btns">
+                        <button type="button" id="btnClean" class="btnCleanForm">Limpiar</button>
+                        <button type="button" id="btnFilter" class="btnFilterForm">Filtrar <img src="src/svg/filters.svg" alt="filters"></button>
+                    </div>
+                </fieldset>     
+            </form>
+        </div>
     </section>
     <footer>
         <div>
@@ -102,7 +98,7 @@
                     </figure>
                 </div>
             </div>
-            <div class="footer-other">
+            <div class="footer-about">
                 <nav>
                     <a>Sobre nosotros</a>
                     <a>Medidas de seguridad (covid-19)</a>
@@ -111,13 +107,13 @@
                     <a>Contáctenos</a>
                     <a>Zona de cobertura</a>
                 </nav>
-                <div class="insta-icon">
-                    <img src="src/svg/instagram.svg" alt="instagram">
-                </div>
-                <h5>Política de tratamiento de datos personales</h5>
-            </div>           
-        </div>
+            <div class="footer-insta">
+                <img src="src/svg/instagram.svg" alt="instagram">   
+            </div>
+            <h6>Política de tratamiento de datos personales</h6>
+        </div>     
     </footer>
+
     <script src="src/js/script.js"></script>
 </body>
 </html>

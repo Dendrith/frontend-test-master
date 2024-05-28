@@ -1,21 +1,73 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+//Seccion productos
 section {
-    border: 1px solid lightgrey;
-    border-radius: .3rem;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 1rem 3rem 1rem;
-    div {
-        margin-left: 1rem;
-        h2 {
-            margin-top: 0;
+    margin-top: 7rem;
+    
+    h1 {
+        margin-top: 8rem;
+        text-align: center;
+    }
+    #result {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        gap: 1rem;
+        margin: 1rem 2rem 2rem 1rem;
+
+        @include m.desktop {
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
         }
-        h4 {
-            margin-bottom: .5rem;
-            font-weight: normal;
+
+        @include m.desktopXL {
+            display: grid;
+            grid-template-columns: repeat(5, 20%);
         }
     }
-    img {
-        color: blue;
-        margin-right: 2rem;
+    .product {
+        @include m.borderBoxes;
+        display: grid;
+        
+        h4, p {
+            margin: .5rem 1rem .5rem 1rem;
+            height: 1.5rem;
+        }
+        p {
+            margin-top: 1.2rem;
+            margin-bottom: 1.3rem;
+            height: 4rem;
+        }
+        img {
+                justify-self: center;
+                margin-top: 1rem;
+                max-width:120px;
+            }
+        }
+        .btn-agregar {
+            background-color: v.$terciary;
+            border: none;
+            border-top: 1px solid v.$terciary;
+            color: v.$blue;
+            font-weight: bold;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            height: 3rem;
+        }
+}
+
+.section-sec {
+    align-items: center;
+    @include m.borderBoxes;
+    display: flex;
+    height: 4.5rem;
+    justify-content: space-between;
+    margin: 1rem 1rem 3rem 1rem;
+    padding: 2rem;
+    h5 {
+        margin-bottom: 0.5rem;
+    }
+    h2 {
+        margin-top: 0.5rem;
     }
 }

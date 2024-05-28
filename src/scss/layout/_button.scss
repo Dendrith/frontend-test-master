@@ -1,20 +1,25 @@
+@use '../base/variables' as v;
+
+//Buttons
 #btnOpenFilter {
     align-items: center;
-    background-color: blue;
+    background-color: v.$blue;
     border: none;
-    border-radius: .3rem;
-    color: white;
+    border-radius: 0.3rem;
+    bottom: .5rem;
+    color: v.$primary;
     display: flex;
-    height: 2rem;
-    justify-content: space-around;
-    position: fixed;
-    bottom: 0.3rem;
+    font-weight: bold;
+    font-size: 1.6rem;
+    justify-content: center;
+    height: 2.5rem;
     left: 35%;
+    line-height: 0;
+    position: fixed;
+    text-align: center;
+    text-transform: uppercase;
     width: 30%;
-    z-index: 2;
-    h4 {
-        text-transform: uppercase;
-    }
+    z-index: 5;
     img {
         filter: invert(1);
     }

@@ -1,118 +1,166 @@
 // Inserción de productos
-// Obtener la plantilla
-var source = document.getElementById("products-template").innerHTML;
-  
-// Compilar la plantilla
-var template = Handlebars.compile(source);
-
 document.addEventListener("DOMContentLoaded", function() {
+    // Capturar plantilla
     var source = document.getElementById("products-template").innerHTML;
+    // Compilar plantilla
     var template = Handlebars.compile(source);
+    // Array para todos los productos
     var allProducts = [];
 
-    // Obtener los datos del archivo JSON
+    // Obtener datos JSON
     fetch('products.json')
         .then(response => response.json())
         .then(data => {
             allProducts = data.products;
             renderProducts(allProducts);
-        })
-        .catch(error => console.error('Error:', error));
-
+        });
+        
     // Función renderizar productos
     function renderProducts(products) {
-        var html = template({ products: products });
+        var html = template({products: products});
         document.getElementById("result").innerHTML = html;
     }
 
-    // Función boton filtrado
-    document.getElementById("botonFiltrado").addEventListener("click", function() {
+    // Función botón filtrado productos
+    document.getElementById('btnFilter').addEventListener('click', function() {
         var selectedFilters = [];
+        
         document.querySelectorAll('.checkboxes:checked').forEach(function(checkbox) {
             selectedFilters.push(parseInt(checkbox.value));
         });
 
-        var filteredProducts = allProducts.filter(function(product) {
+        // Comprueba que hay almenos un checkbox seleccionado
+        if (selectedFilters.length === 0) {
+            const btnCloseResalt = document.querySelector('legend');
+
+            btnCloseResalt.classList.add('resaltar');
+                    document.querySelectorAll('.filterOptions').forEach(option => option.classList.add('resaltar'));
+        
+                    setTimeout(function() {
+                        btnCloseResalt.classList.remove('resaltar');
+                        document.querySelectorAll('.filterOptions').forEach(option => option.classList.remove('resaltar'));
+                        }, 100);
+            return; // Finaliza codigo si no hay checkboxes seleccionados
+        }
+
+        var filterProducts = allProducts.filter(function(product) {
             return selectedFilters.includes(product.filterId);
         });
 
-        renderProducts(filteredProducts);
+        // Renderizar productos filtrados
+        renderProducts(filterProducts);
 
-        //Elimina la clase mostrar del filtro
+        // Eliminar clase mostrar filtro
         document.querySelector('.filter').classList.remove('mostrar');
+        document.querySelector('.filter').classList.add('ocultar');
     });
 
-    // Función limpiar boton clear
-    document.getElementById("clear").addEventListener("click", function(event) {
-        event.preventDefault();
-        document.querySelectorAll('.checkboxes').forEach(function(checkbox) {
-            checkbox.checked = false;
+        // Función botón limpiar filtros
+        document.getElementById('btnClean').addEventListener('click', function(event) {
+            event.preventDefault();
+            const checkboxes = document.querySelectorAll('.checkboxes');
+            const filter = document.querySelector('.filter');
+            const btnCloseResalt = document.querySelector('legend');
+        
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    checkbox.checked = false;
+                    filter.classList.remove('mostrar');
+                    filter.classList.add('ocultar');
+                } else {
+                    btnCloseResalt.classList.add('resaltar');
+                    document.querySelectorAll('.filterOptions').forEach(option => option.classList.add('resaltar'));
+        
+                    setTimeout(function() {
+                        btnCloseResalt.classList.remove('resaltar');
+                        document.querySelectorAll('.filterOptions').forEach(option => option.classList.remove('resaltar'));
+                        }, 100);
+                    }
+            });
+
+            // Renderizar todos los productos
+            renderProducts(allProducts);
         });
-        renderProducts(allProducts);
-
-        //Elimina la clase mostrar del filtro
-        document.querySelector('.filter').classList.remove('mostrar');
     });
-});
 
 // Animación filtro
-document.addEventListener('DOMContentLoaded', function() {
-    //eventListeners();
+document.addEventListener('DOMContentLoaded', function(){
     openFilter();
+    closeFilter();
     filterChecked();
 });
 
 // Función desplegar filtro
 function openFilter() {
-    //constantes
     const btnOpenFilter = document.querySelector('#btnOpenFilter');
     const filter = document.querySelector('.filter');
 
-    //Función agregar o eliminar clase mostrar
-    btnOpenFilter.addEventListener('click', function(){
+    // Función agregar o eliminar clase mostrar
+    btnOpenFilter.addEventListener('click', function() {
+        if(filter.classList.contains('mostrar')) {
+            filter.classList.remove('mostrar');
+        } else {
+            filter.classList.add('mostrar');
+            filter.classList.remove('ocultar');
+        }
+    });
+}
+    
+// Sombrear fondo    
+    //const opacPag = document.querySelector('body');
+    //opacPag.classList.add('sombrear');
+
+// Ocultar formulario filtros
+function closeFilter() {
+    const btnCloseFilter = document.querySelector('#btnCloseFilter');
+    const filter = document.querySelector('.filter');
+    
+    btnCloseFilter.addEventListener('click', function() {
         if (filter.classList.contains('mostrar')) {
             filter.classList.remove('mostrar');
+            filter.classList.add('ocultar');
         } else {
             filter.classList.add('mostrar');
         }
     });
-}
+} 
 
-//Función chequeado checkbox
+// Funcion fijado y limpieza checkboxes
 function filterChecked() {
-    //Constantes checkbox
+
+    // Constantes checkbox
     const check1 = document.getElementById('checkbox1');
     const check2 = document.getElementById('checkbox2');
     const check3 = document.getElementById('checkbox3');
-    const checkClear = document.getElementById('clear');
+    const btnClean = document.getElementById('btnClean');
 
-    //Eventos checkbox
-    //Marcar el checkbox disabled
-    check1.addEventListener('change', function(){
-        if(this.checked) {
-            this.disabled = true;
-        }
-    });
-    check2.addEventListener('change', function(){
-        if(this.checked) {
-            this.disabled = true;
-        }
-    });
-    check3.addEventListener('change', function(){
-        if(this.checked) {
-            this.disabled = true;
+    // Eventos checkbox
+    // Marcar el checkbox disabled
+    check1.addEventListener('change', function() {
+            if(this.checked) {
+                this.disabled=true;
         }
     });
 
-    //Eliminar checked y disabled del checkbox
-    checkClear.addEventListener('click', function() {
+    check2.addEventListener('change', function() {
+        if(this.checked) {
+            this.disabled=true;
+        }
+    });
+    check3.addEventListener('change', function() {
+        if(this.checked) {
+            this.disabled=true;
+        }
+    });
+    btnClean.addEventListener('click', function() {
+
         check1.checked = false;
         check2.checked = false;
         check3.checked = false;
         check1.disabled = false;
         check2.disabled = false;
         check3.disabled = false;
-
+        
     });
 }
 
