@@ -345,7 +345,7 @@ h5 {
 }
 
 h6 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 header {
@@ -406,13 +406,13 @@ section #result {
 @media (min-width: 992px) {
   section #result {
     display: grid;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(4, 24.7%);
   }
 }
 @media (min-width: 1200px) {
   section #result {
     display: grid;
-    grid-template-columns: repeat(5, 20%);
+    grid-template-columns: repeat(5, 19.7%);
   }
 }
 section .product {
@@ -647,7 +647,7 @@ footer h6 {
 
 @keyframes resaltado {
   from {
-    border: 1px solid #0000ff;
+    border: 2px solid #0000ff;
     background-color: #add8e6;
   }
 }

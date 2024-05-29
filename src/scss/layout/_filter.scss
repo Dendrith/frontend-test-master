@@ -58,12 +58,10 @@
                 width: 10%;
             }
         }
-        
         .filter-options-last {
             border-top: 1px solid v.$terciary;
             margin: 0 1rem 1rem 1rem;
-            height: 0.5rem;
-            
+            height: .5rem;
         }
     
         .filter-btns {
@@ -133,8 +131,7 @@
     animation-duration: 1s;
 }
 @keyframes resaltado {
-    from {border: 1px solid v.$blue;
+    from {border: 2px solid v.$blue;
         background-color: v.$lightBlue;
     }  
 }
-
