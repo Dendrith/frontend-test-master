@@ -105,6 +105,7 @@
     }
 }
 
+// Clases funciones
 .mostrar {
     animation-name: mostrar;
     animation-duration: 1s;
@@ -134,4 +135,8 @@
     from {border: 2px solid v.$blue;
         background-color: v.$lightBlue;
     }  
+}
+
+body.blockScroll {
+    overflow: hidden;
 }

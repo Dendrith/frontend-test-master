@@ -12,7 +12,26 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             allProducts = data.products;
-            renderProducts(allProducts);
+
+            // Restaurar filtros localStorage
+            const savedFilters = JSON.parse(localStorage.getItem('selectedFilters'));
+            if (savedFilters && savedFilters.length > 0) {
+                // Marcar los checkboxes guardados
+                savedFilters.forEach(filterId => {
+                    document.querySelector(`.checkboxes[value="${filterId}"]`).checked = true;
+                });
+
+                 // Filtrar productos
+                 var filterProducts = allProducts.filter(function(product) {
+                    return savedFilters.includes(product.filterId);
+                });
+
+                // Renderizar productos filtrados
+                renderProducts(filterProducts);
+            } else {
+                // Renderizar todos los productos si no hay filtros guardados
+                renderProducts(allProducts);
+            }
         });
         
     // Función renderizar productos
@@ -29,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
             selectedFilters.push(parseInt(checkbox.value));
         });
 
-        // Comprueba que hay almenos un checkbox seleccionado
+        // Comprobar que hay almenos un checkbox seleccionado
         if (selectedFilters.length === 0) {
             const btnCloseResalt = document.querySelector('legend');
 
@@ -40,8 +59,11 @@ document.addEventListener("DOMContentLoaded", function() {
                         btnCloseResalt.classList.remove('resaltar');
                         document.querySelectorAll('.filterOptions').forEach(option => option.classList.remove('resaltar'));
                         }, 100);
-            return; // Finaliza codigo si no hay checkboxes seleccionados
+            return; // Finalizar codigo si no hay checkboxes seleccionados
         }
+
+        // Guardar selectedFilters en localStorage
+        localStorage.setItem('selectedFilters', JSON.stringify(selectedFilters));
 
         var filterProducts = allProducts.filter(function(product) {
             return selectedFilters.includes(product.filterId);
@@ -52,36 +74,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Eliminar clase mostrar filtro
         document.querySelector('.filter').classList.remove('mostrar');
+        document.querySelector('body').classList.remove('blockScroll');
         document.querySelector('.filter').classList.add('ocultar');
     });
 
-        // Función botón limpiar filtros
-        document.getElementById('btnClean').addEventListener('click', function(event) {
-            event.preventDefault();
-            const checkboxes = document.querySelectorAll('.checkboxes');
-            const filter = document.querySelector('.filter');
-            const btnCloseResalt = document.querySelector('legend');
+    // Función botón limpiar filtros
+    document.getElementById('btnClean').addEventListener('click', function(event) {
+        event.preventDefault();
+        const checkboxes = document.querySelectorAll('.checkboxes');
+        const filter = document.querySelector('.filter');
+        const body = document.body;
+        const btnCloseResalt = document.querySelector('legend');
         
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    checkbox.checked = false;
-                    filter.classList.remove('mostrar');
-                    filter.classList.add('ocultar');
-                } else {
-                    btnCloseResalt.classList.add('resaltar');
-                    document.querySelectorAll('.filterOptions').forEach(option => option.classList.add('resaltar'));
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                checkbox.checked = false;
+                filter.classList.remove('mostrar');
+                body.classList.remove('blockScroll'); 
+                filter.classList.add('ocultar');
+            } else {
+                btnCloseResalt.classList.add('resaltar');
+                document.querySelectorAll('.filterOptions').forEach(option => option.classList.add('resaltar'));
         
-                    setTimeout(function() {
-                        btnCloseResalt.classList.remove('resaltar');
-                        document.querySelectorAll('.filterOptions').forEach(option => option.classList.remove('resaltar'));
-                        }, 100);
-                    }
-            });
-
-            // Renderizar todos los productos
-            renderProducts(allProducts);
+                setTimeout(function() {
+                    btnCloseResalt.classList.remove('resaltar');
+                    document.querySelectorAll('.filterOptions').forEach(option => option.classList.remove('resaltar'));
+                    }, 100);
+                }
         });
+
+        // Limpiar filtros de localStorage
+        localStorage.removeItem('selectedFilters');
+
+        // Renderizar todos los productos
+        renderProducts(allProducts);
     });
+});
 
 // Animación filtro
 document.addEventListener('DOMContentLoaded', function(){
@@ -94,30 +122,31 @@ document.addEventListener('DOMContentLoaded', function(){
 function openFilter() {
     const btnOpenFilter = document.querySelector('#btnOpenFilter');
     const filter = document.querySelector('.filter');
+    const body =document.body;
 
     // Función agregar o eliminar clase mostrar
     btnOpenFilter.addEventListener('click', function() {
         if(filter.classList.contains('mostrar')) {
             filter.classList.remove('mostrar');
+            body.classList.remove('blockScroll');
         } else {
             filter.classList.add('mostrar');
+            body.classList.add('blockScroll');
             filter.classList.remove('ocultar');
         }
     });
 }
-    
-// Sombrear fondo    
-    //const opacPag = document.querySelector('body');
-    //opacPag.classList.add('sombrear');
 
 // Ocultar formulario filtros
 function closeFilter() {
     const btnCloseFilter = document.querySelector('#btnCloseFilter');
     const filter = document.querySelector('.filter');
+    const body =document.body;
     
     btnCloseFilter.addEventListener('click', function() {
         if (filter.classList.contains('mostrar')) {
             filter.classList.remove('mostrar');
+            body.classList.remove('blockScroll');
             filter.classList.add('ocultar');
         } else {
             filter.classList.add('mostrar');

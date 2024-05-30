@@ -651,5 +651,8 @@ footer h6 {
     background-color: #add8e6;
   }
 }
+body.blockScroll {
+  overflow: hidden;
+}
 
 /*# sourceMappingURL=index.css.map */
