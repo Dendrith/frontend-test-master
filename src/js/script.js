@@ -48,6 +48,26 @@ document.addEventListener("DOMContentLoaded", function() {
             selectedFilters.push(parseInt(checkbox.value));
         });
 
+        // Obtén el elemento del botón btnOpenFilter y btnFilter
+        var btnOpenFilter = document.getElementById('btnOpenFilter');
+        var btnFilter = document.getElementById('btnFilter');
+
+        // Resetear el contenido
+        btnOpenFilter.textContent = '';
+        btnFilter.textContent = '';
+        
+        //Devolver el contenido inicial
+        var añadido = 'Filtrar' + '<img src="src/svg/filters.svg" alt="filters">';
+        
+        // Actualiza el texto del botón con la cantidad de casillas seleccionadas
+        if (selectedFilters.length > 0) {
+            btnOpenFilter.innerHTML += añadido + '(' + selectedFilters.length +')';
+            btnFilter.innerHTML += añadido + '(' + selectedFilters.length + ')';
+        } else {
+            btnOpenFilter.innerHTML += añadido;
+            btnFilter.innerHTML += añadido;
+        }
+
         // Comprobar que hay almenos un checkbox seleccionado
         if (selectedFilters.length === 0) {
             const btnCloseResalt = document.querySelector('legend');
@@ -85,6 +105,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const filter = document.querySelector('.filter');
         const body = document.body;
         const btnCloseResalt = document.querySelector('legend');
+        // Obtén el elemento del botón
+        var btnOpenFilter = document.getElementById('btnOpenFilter');
+        var btnFilter = document.getElementById('btnFilter');
         
         checkboxes.forEach(function(checkbox) {
             if (checkbox.checked) {
@@ -92,6 +115,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 filter.classList.remove('mostrar');
                 body.classList.remove('blockScroll'); 
                 filter.classList.add('ocultar');
+
+            // Resetear el contenido boton Filtrar
+            btnOpenFilter.textContent = '';
+            btnFilter.textContent = '';
+        
+            //Devolver el contenido inicial boton Filtrar
+            var añadido = 'Filtrar' + '<img src="src/svg/filters.svg" alt="filters">';
+        
+            // Actualizar el texto del botón Filtrar a su estado inicial
+            btnOpenFilter.innerHTML += añadido; 
+            btnFilter.innerHTML += añadido;
+
             } else {
                 btnCloseResalt.classList.add('resaltar');
                 document.querySelectorAll('.filterOptions').forEach(option => option.classList.add('resaltar'));
@@ -156,40 +191,20 @@ function closeFilter() {
 
 // Funcion fijado y limpieza checkboxes
 function filterChecked() {
-
-    // Constantes checkbox
-    const check1 = document.getElementById('checkbox1');
-    const check2 = document.getElementById('checkbox2');
-    const check3 = document.getElementById('checkbox3');
+    const checkboxes = document.querySelectorAll('.checkboxes'); 
     const btnClean = document.getElementById('btnClean');
 
-    // Eventos checkbox
-    // Marcar el checkbox disabled
-    check1.addEventListener('change', function() {
-            if(this.checked) {
-                this.disabled=true;
-        }
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            this.disabled = this.checked;
+        });
     });
 
-    check2.addEventListener('change', function() {
-        if(this.checked) {
-            this.disabled=true;
-        }
-    });
-    check3.addEventListener('change', function() {
-        if(this.checked) {
-            this.disabled=true;
-        }
-    });
     btnClean.addEventListener('click', function() {
-
-        check1.checked = false;
-        check2.checked = false;
-        check3.checked = false;
-        check1.disabled = false;
-        check2.disabled = false;
-        check3.disabled = false;
-        
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+            checkbox.disabled = false;
+        });
     });
 }
 
