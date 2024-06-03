@@ -14,16 +14,17 @@ document.addEventListener("DOMContentLoaded", function() {
             allProducts = data.products;
 
             // Restaurar filtros localStorage
-            const savedFilters = JSON.parse(localStorage.getItem('selectedFilters'));
-            if (savedFilters && savedFilters.length > 0) {
+            const SAVED_FILTERS = JSON.parse(localStorage.getItem('selectedFilters'));
+            if (SAVED_FILTERS && SAVED_FILTERS.length > 0) {
                 // Marcar los checkboxes guardados
-                savedFilters.forEach(filterId => {
+                SAVED_FILTERS.forEach(filterId => {
                     document.querySelector(`.checkboxes[value="${filterId}"]`).checked = true;
+                    document.querySelector(`.checkboxes[value="${filterId}"]`).disabled = true;
                 });
 
                  // Filtrar productos
                  var filterProducts = allProducts.filter(function(product) {
-                    return savedFilters.includes(product.filterId);
+                    return SAVED_FILTERS.includes(product.filterId);
                 });
 
                 // Renderizar productos filtrados
@@ -70,13 +71,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Comprobar que hay almenos un checkbox seleccionado
         if (selectedFilters.length === 0) {
-            const btnCloseResalt = document.querySelector('legend');
+            const BTN_RESALT = document.querySelector('legend');
 
-            btnCloseResalt.classList.add('resaltar');
+            BTN_RESALT.classList.add('resaltar');
                     document.querySelectorAll('.filterOptions').forEach(option => option.classList.add('resaltar'));
         
                     setTimeout(function() {
-                        btnCloseResalt.classList.remove('resaltar');
+                        BTN_RESALT.classList.remove('resaltar');
                         document.querySelectorAll('.filterOptions').forEach(option => option.classList.remove('resaltar'));
                         }, 100);
             return; // Finalizar codigo si no hay checkboxes seleccionados
@@ -96,6 +97,9 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.filter').classList.remove('mostrar');
         document.querySelector('body').classList.remove('blockScroll');
         document.querySelector('.filter').classList.add('ocultar');
+        document.querySelector('.shadowBox').classList.remove('shadowAsset');
+        document.querySelector('.shadowBox').classList.add('shadowIdle');
+        
     });
 
     // Función botón limpiar filtros
@@ -105,6 +109,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const filter = document.querySelector('.filter');
         const body = document.body;
         const btnCloseResalt = document.querySelector('legend');
+        const SHADOWBOX = document.querySelector('.shadowBox');
+
         // Obtén el elemento del botón
         var btnOpenFilter = document.getElementById('btnOpenFilter');
         var btnFilter = document.getElementById('btnFilter');
@@ -115,6 +121,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 filter.classList.remove('mostrar');
                 body.classList.remove('blockScroll'); 
                 filter.classList.add('ocultar');
+                SHADOWBOX.classList.add('shadowIdle');
+                SHADOWBOX.classList.remove('shadowAsset');
 
             // Resetear el contenido boton Filtrar
             btnOpenFilter.textContent = '';
@@ -157,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function openFilter() {
     const btnOpenFilter = document.querySelector('#btnOpenFilter');
     const filter = document.querySelector('.filter');
+    const SHADOWBOX = document.querySelector('.shadowBox');
     const body =document.body;
 
     // Función agregar o eliminar clase mostrar
@@ -164,10 +173,13 @@ function openFilter() {
         if(filter.classList.contains('mostrar')) {
             filter.classList.remove('mostrar');
             body.classList.remove('blockScroll');
+            SHADOWBOX.classList.remove('shadowIdle');
         } else {
             filter.classList.add('mostrar');
             body.classList.add('blockScroll');
             filter.classList.remove('ocultar');
+            SHADOWBOX.classList.add('shadowAsset');
+            SHADOWBOX.classList.remove('shadowIdle');
         }
     });
 }
@@ -177,14 +189,18 @@ function closeFilter() {
     const btnCloseFilter = document.querySelector('#btnCloseFilter');
     const filter = document.querySelector('.filter');
     const body =document.body;
+    const SHADOWBOX = document.querySelector('.shadowBox');
     
     btnCloseFilter.addEventListener('click', function() {
         if (filter.classList.contains('mostrar')) {
             filter.classList.remove('mostrar');
             body.classList.remove('blockScroll');
             filter.classList.add('ocultar');
+            SHADOWBOX.classList.remove('shadowAsset');
+            SHADOWBOX.classList.add('shadowIdle');
         } else {
             filter.classList.add('mostrar');
+            
         }
     });
 } 
@@ -207,4 +223,3 @@ function filterChecked() {
         });
     });
 }
-
